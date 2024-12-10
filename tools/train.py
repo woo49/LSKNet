@@ -23,8 +23,8 @@ from mmrotate.utils import collect_env, get_root_logger, setup_multi_processes
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train a detector')
-    parser.add_argument('config', help='train config file path')
-    parser.add_argument('--work-dir', help='the dir to save logs and models')
+    parser.add_argument('config',default='/root/Large-Selective-Kernel-Network/configs/lsknet/lsk_t_fpn_1x_dota_le90.py',  help='train config file path')
+    parser.add_argument('--work-dir', default='/root/Large-Selective-Kernel-Network', help='the dir to save logs and models')
     parser.add_argument(
         '--resume-from', help='the checkpoint file to resume from')
     parser.add_argument(

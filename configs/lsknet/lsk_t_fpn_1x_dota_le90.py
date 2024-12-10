@@ -4,7 +4,7 @@ _base_ = [
 ]
 
 angle_version = 'le90'
-gpu_number = 8
+gpu_number = 1
 # fp16 = dict(loss_scale='dynamic')
 model = dict(
     type='OrientedRCNN',
@@ -14,8 +14,8 @@ model = dict(
         drop_rate=0.1,
         drop_path_rate=0.1,
         depths=[3, 3, 5, 2],
-        init_cfg=dict(type='Pretrained', checkpoint="/data/pretrained/lsk_t_backbone.pth.tar"),
-        norm_cfg=dict(type='SyncBN', requires_grad=True)),
+        init_cfg=dict(type='Pretrained', checkpoint="/root/autodl-tmp/lsk_t_backbone-2ef8a593.pth"),
+        norm_cfg=dict(type='BN', requires_grad=True)),
     neck=dict(
         type='FPN',
         in_channels=[32, 64, 160, 256],
@@ -149,7 +149,7 @@ train_pipeline = [
 ]
 
 data = dict(
-    samples_per_gpu=2,
+    samples_per_gpu=1,
     workers_per_gpu=2,
     train=dict(pipeline=train_pipeline, version=angle_version),
     val=dict(version=angle_version),
